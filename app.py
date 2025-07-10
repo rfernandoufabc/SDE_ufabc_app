@@ -80,8 +80,8 @@ def formulario():
             "curso": request.form['curso'],
             "periodo": request.form['periodo'],
             "tipo": request.form['tipo'],
-            "pergunta1": request.form['pergunta1'],
-            "pergunta2": request.form['pergunta2']
+            "formatoAtividade": request.form['formatoAtividade'],
+            "modalidadeAtividade": request.form['modalidadeAtividade']
         }
         return redirect(url_for('resultado', **dados))
     return render_template('form.html')
@@ -89,8 +89,8 @@ def formulario():
 @app.route('/resultado')
 def resultado():
     tipo = request.args.get('tipo')
-    pergunta1 = request.args.get('pergunta1')
-    pergunta2 = request.args.get('pergunta2')
+    formatoAtividade = request.args.get('formatoAtividade')
+    modalidadeAtividade = request.args.get('modalidadeAtividade')
 
     entidades = Entidade.query.all()
     afinidade = []
@@ -103,15 +103,15 @@ def resultado():
             score += 7
 
         # Preferência social
-        if pergunta1 == "grupo" and e.categoria in ["Esportes", "Cultura", "Política"]:
+        if formatoAtividade == "FORMA_GRU" and e.categoria in ["Esportes", "Cultura", "Política"]:
             score += 3
-        if pergunta1 == "individual" and e.categoria in ["Técnica", "Acadêmica"]:
+        if formatoAtividade == "FORMA_IND" and e.categoria in ["Técnica", "Acadêmica"]:
             score += 3
 
         # Preferência prática/teórica
-        if pergunta2 == "práticas" and e.categoria in ["Esportes", "Técnica"]:
+        if modalidadeAtividade == "ATIV_PRA" and e.categoria in ["Esportes", "Técnica"]:
             score += 3
-        if pergunta2 == "teóricas" and e.categoria in ["Acadêmica", "Política"]:
+        if modalidadeAtividade == "ATIV_TEO" and e.categoria in ["Acadêmica", "Política"]:
             score += 3
 
         # Bônus se descrição tiver alguma palavra-chave
