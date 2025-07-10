@@ -10,35 +10,77 @@
     <h2 class="mb-4 text-center">Formulário de Interesse</h2>
     <form method="post" class="card p-4 shadow">
       <div class="mb-3">
-        <label class="form-label">Curso:</label>
-        <input type="text" class="form-control" name="curso" required>
+        <label for="cursoSelect">Curso:</label>
+            <select class="form-select" id="cursoSelect" name="curso" required>
+                <option value="" disabled selected>-- Selecione um curso --</option>
+                <optgroup label="Bacharelados">
+                    <option value="B_BIOTECNOLOGIA">Bacharelado em Biotecnologia</option>
+                    <option value="B_CIENCIA_COMPUTACAO">Bacharelado em Ciência da Computação</option>
+                    <option value="B_CIENCIA_DADOS">Bacharelado em Ciência de Dados</option>
+                    <option value="B_CIENCIA_TECNOLOGIA">Bacharelado em Ciência e Tecnologia (BC&T)</option>
+                    <option value="B_CIENCIAS_BIOLOGICAS">Bacharelado em Ciências Biológicas</option>
+                    <option value="B_CIENCIAS_HUMANIDADES">Bacharelado em Ciências e Humanidades (BC&H)</option>
+                    <option value="B_CIENCIAS_ECONOMICAS">Bacharelado em Ciências Econômicas</option>
+                    <option value="B_FILOSOFIA">Bacharelado em Filosofia</option>
+                    <option value="B_FISICA">Bacharelado em Física</option>
+                    <option value="B_MATEMATICA">Bacharelado em Matemática</option>
+                    <option value="B_NEUROCIENCIA">Bacharelado em Neurociência</option>
+                    <option value="B_PLANEJAMENTO_TERRITORIAL">Bacharelado em Planejamento Territorial</option>
+                    <option value="B_POLITICAS_PUBLICAS">Bacharelado em Políticas Públicas</option>
+                    <option value="B_QUIMICA">Bacharelado em Química</option>
+                    <option value="B_RELACOES_INTERNACIONAIS">Bacharelado em Relações Internacionais</option>
+                </optgroup>
+                <optgroup label="Engenharias">
+                    <option value="E_AEROESPACIAL">Engenharia Aeroespacial</option>
+                    <option value="E_AMBIENTAL_URBANA">Engenharia Ambiental e Urbana</option>
+                    <option value="E_BIOMEDICA">Engenharia Biomédica</option>
+                    <option value="E_ENERGIA">Engenharia de Energia</option>
+                    <option value="E_GESTAO">Engenharia de Gestão</option>
+                    <option value="E_INFORMACAO">Engenharia de Informação</option>
+                    <option value="E_INSTRUMENTACAO_AUTOMACAO_ROBOTICA">Engenharia de Instrumentação, Automação e Robótica</option>
+                    <option value="E_MATERIAIS">Engenharia de Materiais</option>
+                </optgroup>
+                <optgroup label="Licenciaturas">
+                    <option value="L_CIENCIAS_BIOLOGICAS">Licenciatura em Ciências Biológicas</option>
+                    <option value="L_CIENCIAS_HUMANAS">Licenciatura em Ciências Humanas (LCH)</option>
+                    <option value="L_CIENCIAS_NATURAIS_EXATAS">Licenciatura em Ciências Naturais e Exatas (LCNE)</option>
+                    <option value="L_FILOSOFIA">Licenciatura em Filosofia</option>
+                    <option value="L_FISICA">Licenciatura em Física</option>
+                    <option value="L_HISTORIA">Licenciatura em História</option>
+                    <option value="L_MATEMATICA">Licenciatura em Matemática</option>
+                    <option value="L_QUIMICA">Licenciatura em Química</option>
+                </optgroup>
+            </select>
       </div>
       <div class="mb-3">
-        <label class="form-label">Período:</label>
-        <input type="text" class="form-control" name="periodo" required>
-      </div>
+        <label class="form-check-label">Período:</label>
+        <input class="form-check-input" type="radio" id="periodoMatutino" name="periodo" value="PER_MAT" required checked>
+        <label class="form-check-label" for="periodoMatutino">Matutino</label>
+        <input class="form-check-input" type="radio" id="periodoNoturno" name="periodo" value="PER_NOT">
+        <label for="periodoNoturno">Noturno</label>
+      </div>	
       <div class="mb-3">
         <label class="form-label">Tipo de Entidade:</label>
         <select class="form-select" name="tipo" required>
-          <option>Esportes</option>
-          <option>Cultura</option>
-          <option>Técnica</option>
-          <option>Acadêmica</option>
-          <option>Política</option>
+          <option value="TIPO_ESPO">Esportes</option>
+          <option value="TIPO_CULT">Cultura</option>
+          <option value="TIPO_TECN">Técnica</option>
+          <option value="TIPO_ACAD">Acadêmica</option>
+          <option value="TIPO_POLI">Política</option>
         </select>
       </div>
       <div class="mb-3">
         <label class="form-label">Prefere atividades em grupo ou individuais?</label>
         <select class="form-select" name="pergunta1" required>
-          <option value="grupo">Grupo</option>
-          <option value="individual">Individual</option>
+          <option value="FORMA_GRU">Grupo</option>
+          <option value="FORMA_IND">Individual</option>
         </select>
       </div>
       <div class="mb-3">
         <label class="form-label">Prefere atividades mais práticas ou teóricas?</label>
         <select class="form-select" name="pergunta2" required>
-          <option value="práticas">Práticas</option>
-          <option value="teóricas">Teóricas</option>
+          <option value="ATIV_PRA">Práticas</option>
+          <option value="ATIV_TEO">Teóricas</option>
         </select>
       </div>
       <div class="d-grid">
