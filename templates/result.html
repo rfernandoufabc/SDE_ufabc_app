@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resultado</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Entidades recomendadas para você</h2>
+    {% if entidades %}
+      <div class="list-group">
+        {% for e, score in entidades %}
+          <div class="list-group-item">
+            <h5 class="mb-1">{{ e.nome }} 
+              <span class="badge bg-secondary">{{ e.categoria }}</span> 
+              <span class="badge bg-info">Afinidade: {{ score }}</span>
+            </h5>
+            <p class="mb-1">{{ e.descricao }}</p>
+            {% if e.instagram %}
+              <a href="{{ e.instagram }}" target="_blank" class="btn btn-sm btn-outline-primary">Visitar Instagram</a>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="alert alert-warning text-center">Nenhuma entidade recomendada com base nas suas respostas.</div>
+    {% endif %}
+    <div class="mt-4 text-center">
+      <a href="/" class="btn btn-secondary">Voltar ao início</a>
+    </div>
+  </div>
+</body>
+</html>
