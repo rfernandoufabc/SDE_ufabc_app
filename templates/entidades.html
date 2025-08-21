@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Entidades Cadastradas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #FFE6E6 0%, #E6F0E6 100%);
+      min-height: 100vh;
+    }
+    .main-card {
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background: white;
+      border-top: 5px solid #006633;
+    }
+    .entity-card {
+      height: 100%;
+      transition: transform 0.2s;
+      background: white;
+      border-radius: 12px;
+      border: none;
+      border-top: 4px solid #006633;
+    }
+    .entity-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1) !important;
+    }
+    .entity-image {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      background-color: #f8f9fa;
+      border-bottom: 2px solid #E6F0E6;
+    }
+    .badge {
+      margin-right: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+    .attribute-badge {
+      background-color: #6B4E71;
+    }
+    .course-badge {
+      background-color: #006633;
+    }
+    .section-title {
+      color: #006633;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .card-title {
+      color: #333;
+      font-weight: 600;
+    }
+    .text-muted {
+      color: #6B4E71 !important;
+    }
+    .btn-primary {
+      background-color: #006633;
+      border-color: #006633;
+    }
+    .btn-primary:hover {
+      background-color: #005528;
+      border-color: #005528;
+    }
+    .btn-secondary {
+      background-color: #6B4E71;
+      border-color: #6B4E71;
+    }
+    .btn-secondary:hover {
+      background-color: #5a4260;
+      border-color: #5a4260;
+    }
+  </style>
+</head>
+<body>
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="card main-card">
+          <div class="card-body p-4">
+            <h2 class="text-center mb-4">
+              <i class="bi bi-collection-fill text-primary me-2"></i>
+              Entidades Cadastradas
+            </h2>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+              {% for entidade in entidades %}
+              <div class="col">
+                <div class="card h-100 shadow entity-card">
+                  {% if entidade.imagem_base64 %}
+                  <img src="data:image/png;base64,{{ entidade.imagem_base64 }}" class="card-img-top entity-image p-3" alt="{{ entidade.nome }}">
+                  {% else %}
+                  <div class="card-img-top entity-image d-flex align-items-center justify-content-center bg-light">
+                    <i class="bi bi-image text-secondary" style="font-size: 3rem;"></i>
+                  </div>
+                  {% endif %}
+
+                  <div class="card-body">
+                    <h5 class="card-title mb-3">{{ entidade.nome }}</h5>
+
+                    <div class="mb-2">
+                      <small class="text-muted">
+                        <i class="bi bi-geo-alt-fill me-1"></i> Campus: {{ entidade.campus }}
+                      </small>
+                    </div>
+
+                    <div class="mb-2">
+                      <small class="text-muted">
+                        <i class="bi bi-tag-fill me-1"></i> {{ entidade.categoria }}
+                      </small>
+                    </div>
+
+                    <div class="mb-2">
+                      <small class="text-muted">
+                        <i class="bi bi-gear-fill me-1"></i> {{ entidade.tipo_atividade }}
+                      </small>
+                    </div>
+
+                    <div class="mb-3">
+                      <small class="text-muted">
+                        <i class="bi bi-people-fill me-1"></i> {{ entidade.tipo_participacao }}
+                      </small>
+                    </div>
+
+                    {% if entidade.atributos %}
+                    <div class="mb-2">
+                      <small class="text-muted d-block mb-1">Atributos:</small>
+                      {% for atributo in entidade.atributos %}
+                      <span class="badge attribute-badge">{{ atributo }}</span>
+                      {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% if entidade.cursos %}
+                    <div class="mb-3">
+                      <small class="text-muted d-block mb-1">Cursos:</small>
+                      {% for curso in entidade.cursos %}
+                      <span class="badge course-badge">{{ curso }}</span>
+                      {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% if entidade.url_pagina %}
+                    <a href="{{ entidade.url_pagina }}" target="_blank" class="btn btn-primary btn-sm w-100">
+                      <i class="bi bi-link-45deg"></i> Visitar página
+                    </a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+
+            <div class="mt-4 text-center">
+              <a href="/" class="btn btn-secondary">
+                <i class="bi bi-house-fill"></i> Voltar ao início
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

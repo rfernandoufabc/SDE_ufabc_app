@@ -1,95 +1,217 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
   <meta charset="UTF-8">
   <title>Formulário de Interesse</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #FFE6E6 0%, #E6F0E6 100%);
+      min-height: 100vh;
+    }
+    .form-card {
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background: white;
+      border-top: 5px solid #006633;
+    }
+    .form-section {
+      background-color: rgba(230, 240, 230, 0.5);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-left: 4px solid #006633;
+    }
+    .form-check-input:checked {
+      background-color: #006633;
+      border-color: #006633;
+    }
+    .form-label {
+      font-weight: 500;
+      color: #6B4E71;
+    }
+    .section-title {
+      color: #006633;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .form-check-label {
+      color: #495057;
+    }
+    .required-field::after {
+      content: "*";
+      color: #dc3545;
+      margin-left: 4px;
+    }
+    .btn-primary {
+      background-color: #006633;
+      border-color: #006633;
+    }
+    .btn-primary:hover {
+      background-color: #005528;
+      border-color: #005528;
+    }
+    .btn-secondary {
+      background-color: #6B4E71;
+      border-color: #6B4E71;
+    }
+    .btn-secondary:hover {
+      background-color: #5a4260;
+      border-color: #5a4260;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: #006633;
+      box-shadow: 0 0 0 0.25rem rgba(0, 102, 51, 0.25);
+    }
+    .atributos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    .atributo-item {
+      padding: 8px;
+      border-radius: 8px;
+      transition: background-color 0.2s;
+    }
+    .atributo-item:hover {
+      background-color: rgba(230, 240, 230, 0.5);
+    }
+  </style>
 </head>
 <body>
-  <div class="container mt-5">
-    <h2 class="mb-4 text-center">Formulário de Interesse</h2>
-    <form method="post" class="card p-4 shadow">
-      <div class="mb-3">
-        <label for="cursoSelect">Curso:</label>
-            <select class="form-select" id="cursoSelect" name="curso" required>
-                <option value="" disabled selected>-- Selecione um curso --</option>
-                <optgroup label="Bacharelados">
-                    <option value="B_BIOTECNOLOGIA">Bacharelado em Biotecnologia</option>
-                    <option value="B_CIENCIA_COMPUTACAO">Bacharelado em Ciência da Computação</option>
-                    <option value="B_CIENCIA_DADOS">Bacharelado em Ciência de Dados</option>
-                    <option value="B_CIENCIA_TECNOLOGIA">Bacharelado em Ciência e Tecnologia (BC&T)</option>
-                    <option value="B_CIENCIAS_BIOLOGICAS">Bacharelado em Ciências Biológicas</option>
-                    <option value="B_CIENCIAS_HUMANIDADES">Bacharelado em Ciências e Humanidades (BC&H)</option>
-                    <option value="B_CIENCIAS_ECONOMICAS">Bacharelado em Ciências Econômicas</option>
-                    <option value="B_FILOSOFIA">Bacharelado em Filosofia</option>
-                    <option value="B_FISICA">Bacharelado em Física</option>
-                    <option value="B_MATEMATICA">Bacharelado em Matemática</option>
-                    <option value="B_NEUROCIENCIA">Bacharelado em Neurociência</option>
-                    <option value="B_PLANEJAMENTO_TERRITORIAL">Bacharelado em Planejamento Territorial</option>
-                    <option value="B_POLITICAS_PUBLICAS">Bacharelado em Políticas Públicas</option>
-                    <option value="B_QUIMICA">Bacharelado em Química</option>
-                    <option value="B_RELACOES_INTERNACIONAIS">Bacharelado em Relações Internacionais</option>
-                </optgroup>
-                <optgroup label="Engenharias">
-                    <option value="E_AEROESPACIAL">Engenharia Aeroespacial</option>
-                    <option value="E_AMBIENTAL_URBANA">Engenharia Ambiental e Urbana</option>
-                    <option value="E_BIOMEDICA">Engenharia Biomédica</option>
-                    <option value="E_ENERGIA">Engenharia de Energia</option>
-                    <option value="E_GESTAO">Engenharia de Gestão</option>
-                    <option value="E_INFORMACAO">Engenharia de Informação</option>
-                    <option value="E_INSTRUMENTACAO_AUTOMACAO_ROBOTICA">Engenharia de Instrumentação, Automação e Robótica</option>
-                    <option value="E_MATERIAIS">Engenharia de Materiais</option>
-                </optgroup>
-                <optgroup label="Licenciaturas">
-                    <option value="L_CIENCIAS_BIOLOGICAS">Licenciatura em Ciências Biológicas</option>
-                    <option value="L_CIENCIAS_HUMANAS">Licenciatura em Ciências Humanas (LCH)</option>
-                    <option value="L_CIENCIAS_NATURAIS_EXATAS">Licenciatura em Ciências Naturais e Exatas (LCNE)</option>
-                    <option value="L_FILOSOFIA">Licenciatura em Filosofia</option>
-                    <option value="L_FISICA">Licenciatura em Física</option>
-                    <option value="L_HISTORIA">Licenciatura em História</option>
-                    <option value="L_MATEMATICA">Licenciatura em Matemática</option>
-                    <option value="L_QUIMICA">Licenciatura em Química</option>
-                </optgroup>
-            </select>
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10">
+        <div class="card form-card">
+          <div class="card-body p-4">
+            <h2 class="text-center mb-4">
+              <i class="bi bi-search-heart-fill text-primary me-2"></i>
+              Formulário de Interesse
+            </h2>
+
+            <form method="post">
+              <!-- Informações do Curso -->
+              <div class="form-section">
+                <h3 class="section-title">
+                  <i class="bi bi-mortarboard-fill me-2"></i>
+                  Informações do Curso
+                </h3>
+                <div class="mb-3">
+                  <label for="cursoSelect" class="form-label required-field">Curso</label>
+                  <select class="form-select" id="cursoSelect" name="curso" required>
+                    <option value="" disabled selected>-- Selecione um curso --</option>
+                    {% for categoria, cursos in cursos_agrupados.items() %}
+                      <optgroup label="{{ categoria }}">
+                        {% for curso in cursos %}
+                          <option value="{{ curso.id_curso }}">
+                            {{ curso.nome_curso }} (Campus: {{ curso.campus.nome_campus }})
+                          </option>
+                        {% endfor %}
+                      </optgroup>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label required-field">Período</label>
+                  <div class="ms-2">
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" type="radio" id="periodoMatutino" name="periodo" value="PER_MAT" required checked>
+                      <label class="form-check-label" for="periodoMatutino">Matutino</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" id="periodoNoturno" name="periodo" value="PER_NOT">
+                      <label class="form-check-label" for="periodoNoturno">Noturno</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Preferências -->
+              <div class="form-section">
+                <h3 class="section-title">
+                  <i class="bi bi-sliders me-2"></i>
+                  Preferências
+                </h3>
+                <div class="mb-3">
+                  <label class="form-label required-field">Tipo de Entidade</label>
+                  <select class="form-select" name="categoria_id" required>
+                    <option value="" disabled selected>-- Selecione uma categoria --</option>
+                    {% for codigo, nome in categorias %}
+                      <option value="{{ codigo }}">{{ nome }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label required-field">Prefere atividades em grupo ou individuais?</label>
+                  <select class="form-select" name="tipo_participacao" required>
+                    <option value="" disabled selected>-- Selecione o tipo --</option>
+                    {% for codigo, nome in tipos_participacao %}
+                      <option value="{{ codigo }}">{{ nome }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label required-field">Prefere atividades mais práticas ou teóricas?</label>
+                  <select class="form-select" name="tipo_atividade" required>
+                    <option value="" disabled selected>-- Selecione o tipo --</option>
+                    {% for codigo, nome in tipos_atividade %}
+                      <option value="{{ codigo }}">{{ nome }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+
+              <!-- Atributos -->
+              <div class="form-section">
+                <h3 class="section-title">
+                  <i class="bi bi-tags-fill me-2"></i>
+                  Atributos
+                </h3>
+                <div class="mb-3">
+                  <label class="form-label required-field mb-3">Selecione de 5 a 15 atributos que mais te interessam:</label>
+                  <div class="atributos-grid">
+                    {% for atributo in todos_atributos %}
+                      <div class="atributo-item">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" name="atributos" value="{{ atributo.id }}" id="atributo{{ atributo.id }}">
+                          <label class="form-check-label" for="atributo{{ atributo.id }}">{{ atributo.nome }}</label>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+                  <small class="text-muted d-block mt-2">
+                    <i class="bi bi-info-circle-fill"></i>
+                    Selecione no mínimo 5 e no máximo 15 atributos.
+                  </small>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between mt-4">
+                <a href="/" class="btn btn-secondary">
+                  <i class="bi bi-arrow-left"></i> Voltar
+                </a>
+                <button type="submit" class="btn btn-primary">
+                  <i class="bi bi-search-heart"></i> Encontrar Entidades
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-check-label">Período:</label>
-        <input class="form-check-input" type="radio" id="periodoMatutino" name="periodo" value="PER_MAT" required checked>
-        <label class="form-check-label" for="periodoMatutino">Matutino</label>
-        <input class="form-check-input" type="radio" id="periodoNoturno" name="periodo" value="PER_NOT">
-        <label for="periodoNoturno">Noturno</label>
-      </div>	
-      <div class="mb-3">
-        <label class="form-label">Tipo de Entidade:</label>
-        <select class="form-select" name="tipo" required>
-          <option value="TIPO_ESPO">Esportes</option>
-          <option value="TIPO_CULT">Cultura</option>
-          <option value="TIPO_TECN">Técnica</option>
-          <option value="TIPO_ACAD">Acadêmica</option>
-          <option value="TIPO_POLI">Política</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Prefere atividades em grupo ou individuais?</label>
-        <select class="form-select" name="formatoAtividade" required>
-          <option value="FORMA_GRU">Grupo</option>
-          <option value="FORMA_IND">Individual</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Prefere atividades mais práticas ou teóricas?</label>
-        <select class="form-select" name="modalidadeAtividade" required>
-          <option value="ATIV_PRA">Práticas</option>
-          <option value="ATIV_TEO">Teóricas</option>
-        </select>
-      </div>
-      <div class="d-grid">
-        <button type="submit" class="btn btn-primary">Enviar</button>
-      </div>
-    </form>
-    <div class="mt-3 text-center">
-      <a href="/" class="btn btn-secondary">Voltar ao início</a>
     </div>
   </div>
+
+  <script>
+    // Validação de atributos
+    document.querySelector('form').addEventListener('submit', function(e) {
+      var checked = document.querySelectorAll('input[name="atributos"]:checked').length;
+      if (checked < 5 || checked > 15) {
+        alert('Por favor, selecione entre 5 e 15 atributos.');
+        e.preventDefault();
+      }
+    });
+  </script>
 </body>
 </html>
